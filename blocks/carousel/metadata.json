@@ -1,0 +1,28 @@
+{
+  "variantName": "carousel",
+  "baseBlock": "carousel",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "large",
+    "structure": "full-bleed image slides with prev/next controls and slide indicators"
+  },
+  "contentPattern": "One row per slide; first cell is the slide image, optional second cell is overlaid slide content (heading, text, CTA).",
+  "usage": {
+    "pagesUsing": [
+      "/us/en"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-17T06:38:36.613Z"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "carousel-minimal-dark-withimg",
+    "carousel-minimal-dark-withimg-1",
+    "carousel-minimal-dark-withimg-2",
+    "carousel-minimal-dark-withimg-3"
+  ]
+}

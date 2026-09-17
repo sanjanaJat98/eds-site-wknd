@@ -1,0 +1,17 @@
+{
+  "variantName": "tabs",
+  "baseBlock": "tabs",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {},
+  "contentPattern": "",
+  "usage": "WKND tabs block",
+  "options": [],
+  "memberVariantIds": [],
+  "usageTracking": {
+    "pagesUsing": [
+      "/us/en/adventures"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-17"
+  }
+}

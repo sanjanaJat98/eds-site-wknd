@@ -1,0 +1,34 @@
+{
+  "variantName": "accordion",
+  "baseBlock": "accordion",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "comfortable",
+    "purpose": "faq",
+    "imagePattern": "noimg",
+    "structure": "question summary + answer body"
+  },
+  "contentPattern": "One row per FAQ item; cell 1 question, cell 2 answer",
+  "usage": {
+    "description": "WKND accordion block for expandable Q&A rows",
+    "pagesUsing": [
+      "/us/en/faqs"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-17T07:21:09.169Z"
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "FAQ pages",
+      "expandable question/answer lists",
+      "collapsible content sections"
+    ],
+    "notSuitableFor": [
+      "tabbed content",
+      "image galleries"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": []
+}

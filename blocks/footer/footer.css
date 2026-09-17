@@ -1,20 +1,134 @@
+/* WKND footer — dark, light text; mobile-first */
+
 footer {
-  background-color: var(--light-color);
+  background-color: var(--dark-color);
+  color: var(--overlay-text-color);
   font-size: var(--body-font-size-xs);
 }
 
-footer .footer > div {
+footer .footer-inner {
+  box-sizing: border-box;
   margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+  max-width: var(--content-width);
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-footer .footer p {
+footer .footer-inner p {
+  margin: 0 0 12px;
+}
+
+footer a:any-link {
+  color: var(--overlay-text-color);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* brand */
+footer .footer-brand img {
+  width: 120px;
+  height: auto;
+}
+
+/* footer nav */
+footer .footer-nav ul {
+  list-style: none;
   margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+footer .footer-nav a {
+  font-family: var(--heading-font-family);
+  font-size: var(--body-font-size-m);
+}
+
+/* social */
+footer .footer-social h4 {
+  margin: 0 0 12px;
+  color: var(--overlay-text-color);
+}
+
+footer .footer-social ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+}
+
+footer .footer-social li a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  font-size: 0;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+footer .footer-social li a:hover {
+  opacity: 1;
+  text-decoration: none;
+}
+
+footer .footer-social img {
+  width: 20px;
+  height: 20px;
+}
+
+/* legal / attribution */
+footer .footer-legal {
+  border-top: 1px solid rgb(255 255 255 / 20%);
+  padding-top: 24px;
+  color: var(--text-muted-color);
+  line-height: 1.6;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+footer .footer-legal a {
+  text-decoration: underline;
 }
 
 @media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+  footer .footer-inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      'brand nav social'
+      'legal legal legal';
+    align-items: start;
+    gap: 32px;
+    padding: 48px 32px;
+  }
+
+  footer .footer-brand {
+    grid-area: brand;
+  }
+
+  footer .footer-nav {
+    grid-area: nav;
+    justify-self: center;
+  }
+
+  footer .footer-social {
+    grid-area: social;
+  }
+
+  footer .footer-legal {
+    grid-area: legal;
+  }
+
+  footer .footer-nav ul {
+    flex-direction: row;
+    gap: 32px;
   }
 }
