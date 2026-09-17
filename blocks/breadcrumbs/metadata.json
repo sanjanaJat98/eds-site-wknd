@@ -1,0 +1,17 @@
+{
+  "variantName": "breadcrumbs",
+  "baseBlock": "breadcrumbs",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {},
+  "contentPattern": "",
+  "usage": "WKND breadcrumbs block",
+  "options": [],
+  "memberVariantIds": [],
+  "usageTracking": {
+    "pagesUsing": [
+      "/us/en/magazine/san-diego-surf"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-17"
+  }
+}

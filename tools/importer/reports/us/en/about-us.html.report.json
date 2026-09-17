@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "url": "https://wknd.site/us/en/about-us.html",
+  "path": "us/en/about-us.html",
+  "timestamp": "2026-09-17T07:33:46.127Z",
+  "error": "CustomImportScript.default not found after 10s. The bundled script may not have loaded correctly. Check browser console for errors.",
+  "errorStack": "Error: CustomImportScript.default not found after 10s. The bundled script may not have loaded correctly. Check browser console for errors.\n    at processUrl (file:///home/node/.excat-marketplaces/excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:662:13)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:472:9)\n    at async main (file:///home/node/.excat-marketplaces/excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:954:22)"
+}
