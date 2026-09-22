@@ -2,13 +2,10 @@
   "type": "da",
   "sites": {
     "eds-site-wknd": {
-      "previewOrg": "sanjanaJat98",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json",
+      "previewOrg": "sanjanajat98",
       "previewSite": "eds-site-wknd",
-      "contentHostUrl": "https://content.da.live/sanjanajat98/eds-site-wknd/",
-      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
+      "contentHostUrl": "https://content.da.live/sanjanajat98/eds-site-wknd/"
     }
-  },
-  "features": [
-    "site-planning"
-  ]
+  }
 }
