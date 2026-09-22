@@ -1,3 +1,5 @@
+/* Hero — full-width image with an optional white content panel overlapping
+   its lower area. Structural/layout only. */
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
@@ -5,43 +7,160 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0;
+  min-height: min(52vw, 560px);
 }
 
-.hero h1,
-.hero h2,
-.hero h3,
-.hero h4,
-.hero h5,
-.hero h6,
-.hero p {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--overlay-text-color);
-}
-
-.hero.no-image * {
-  color: var(--text-color);
+/* background image */
+.hero .hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
 }
 
 .hero picture {
   position: absolute;
-  z-index: -1;
   inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
 }
 
-.hero img {
-  object-fit: cover;
+.hero picture img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+
+/* content panel overlaid near the bottom-left */
+.hero .hero-content {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 720px;
+  margin: 0;
+  padding: 32px 24px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* when there is no content panel, the hero is just the image with a title */
+.hero h1 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero .hero-content h1,
+.hero .hero-content h2 {
+  margin-top: 0;
+}
+
+/* featured-article variant: panel led by an eyebrow paragraph sits on a light
+   grey card (matches WKND's featured split panel — #ebebeb, slightly darker
+   than the page's --light-color) */
+.hero .hero-content:has(> p:first-child) {
+  background-color: #ebebeb;
+}
+
+/* eyebrow kicker above the featured title */
+.hero .hero-content > p:first-child {
+  margin: 0 0 8px;
+  color: var(--dark-color);
+  font-size: var(--body-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 @media (width >= 900px) {
-  .hero {
-    padding: 40px 32px;
+  .hero .hero-content {
+    padding: 40px 48px;
+    margin-left: 68px;
+    margin-bottom: 0;
+  }
+
+  /* Plain hero (no eyebrow, e.g. "Climbing New Zealand"): the white content
+     card is a wide, low overlay spanning most of the slide width (matching the
+     source's ~1192px card), so the description wraps on ~2 lines instead of
+     being confined to the left half. Excludes the featured-article variant. */
+
+  /* The block is rows>cells, so the content cell sits inside an unclassed row
+     wrapper. Because .hero is a flex column with align-items: flex-start, that
+     wrapper otherwise shrink-wraps to its text — collapsing the centered card
+     to a narrow left-aligned panel. Force each row wrapper full-width so the
+     card's `margin: 0 auto` centers across the whole slide. */
+  .hero:not(:has(.hero-content > p:first-child)) > div {
+    width: 100%;
+  }
+
+  /* The card overhangs the image bottom by 48px (its negative bottom margin),
+     but that overhang isn't part of the hero's box — so reserve 48px below the
+     hero to keep the following content (e.g. the /adventures "Current
+     Adventures" heading) from flowing up into the card and overlapping it. */
+  .hero:not(:has(.hero-content > p:first-child)) {
+    margin-bottom: 48px;
+  }
+
+  .hero:not(:has(.hero-content > p:first-child)) .hero-content {
+    width: 100%;
+    max-width: min(1192px, calc(100% - 96px));
+    margin: 0 auto -48px;
+    padding: 40px 48px;
+  }
+
+  /* Featured-article hero (has an eyebrow): a CONTAINED two-column card —
+     image on the left, grey text panel on the right — not a full-bleed
+     overlay. Detected via the eyebrow paragraph. The IMAGE renders at its
+     natural aspect ratio and defines the row height; the grey text panel
+     stretches to match it (matching WKND's featured split panel). */
+  .hero:has(.hero-content > p:first-child) {
+    display: grid;
+    grid-template-columns: minmax(0, 709fr) minmax(360px, 427px);
+    align-items: stretch;
+
+    /* 1200 − 2×32 padding = 1136px inner, matching source's contained panel */
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 32px;
+    min-height: 0;
+  }
+
+  /* the block is rows>cells, so the grid items are the (unclassed) row
+     wrappers; make each a full-height flex column so its cell fills the row */
+  .hero:has(.hero-content > p:first-child) > div {
+    display: flex;
+    flex-direction: column;
+    min-height: 420px;
+  }
+
+  /* image cell fills the full row height; the image covers it so there is
+     never an empty gap below it */
+  .hero:has(.hero-content > p:first-child) .hero-image {
+    position: relative;
+    inset: auto;
+    z-index: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
+  .hero:has(.hero-content > p:first-child) .hero-image picture,
+  .hero:has(.hero-content > p:first-child) .hero-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* grey panel: fills its row wrapper, text vertically centered */
+  .hero:has(.hero-content > p:first-child) .hero-content {
+    max-width: none;
+    flex: 1 1 auto;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
