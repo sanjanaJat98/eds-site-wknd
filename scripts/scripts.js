@@ -235,6 +235,61 @@ function decorateContributors(main) {
 }
 
 /**
+ * On adventure-detail pages, wrap any image paragraph's trailing text in a
+ * .adventure-caption span so it renders as the source's small uppercase caption
+ * below the image (instead of inline beside it). No-ops elsewhere.
+ * @param {Element} main The main element
+ */
+function decorateAdventureCaption(main) {
+  const section = main.querySelector('.section.carousel-container.tabs-container');
+  if (!section) return;
+  section.querySelectorAll('p').forEach((p) => {
+    if (!p.querySelector('picture, img')) return;
+    if (p.querySelector('.adventure-caption')) return;
+    [...p.childNodes].forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+        const span = document.createElement('span');
+        span.className = 'adventure-caption';
+        span.textContent = node.textContent.trim();
+        node.replaceWith(span);
+      }
+    });
+  });
+}
+
+/**
+ * On adventure-detail pages, pair the metadata sidebar (default-content-wrapper
+ * with the trip-stats list) and the tabbed content into one two-column row so
+ * their tops align, and lift the title into a full-width wrapper below the hero.
+ * No-ops elsewhere.
+ * @param {Element} main The main element
+ */
+function decorateAdventureLayout(main) {
+  const section = main.querySelector('.section.carousel-container.tabs-container');
+  if (!section) return;
+  const dcw = section.querySelector(':scope > .default-content-wrapper');
+  const tabsWrapper = section.querySelector(':scope > .tabs-wrapper');
+  if (!dcw || section.querySelector(':scope > .adventure-columns')) return;
+
+  // lift the title out into a full-width wrapper below the hero
+  const h1 = dcw.querySelector(':scope > h1');
+  if (h1) {
+    const titleWrapper = document.createElement('div');
+    titleWrapper.className = 'adventure-title-wrapper';
+    titleWrapper.append(h1);
+    dcw.before(titleWrapper);
+  }
+
+  // pair the metadata sidebar and the tabs into one two-column row
+  if (tabsWrapper) {
+    const columns = document.createElement('div');
+    columns.className = 'adventure-columns';
+    dcw.before(columns);
+    columns.append(dcw, tabsWrapper);
+  }
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -245,6 +300,8 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateButtons(main);
+  decorateAdventureCaption(main);
+  decorateAdventureLayout(main);
   decorateContributors(main);
 }
 

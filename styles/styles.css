@@ -488,3 +488,142 @@ main .section.about-contributors .contributor-socials {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================================
+   Adventure-detail layout — two-column stats sidebar + tabbed content.
+   Built by decorateAdventureLayout()/decorateAdventureCaption() in scripts.js.
+   ============================================================ */
+main .section.carousel-container.tabs-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 32px;
+}
+
+/* hero is full-bleed: break the carousel out to the full viewport width */
+main .section.carousel-container.tabs-container > .carousel-wrapper {
+  width: 100vw;
+  max-width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  margin-right: 0;
+}
+
+@media (width >= 900px) {
+  main .section.carousel-container.tabs-container .adventure-columns {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    column-gap: 48px;
+    align-items: start;
+  }
+
+  main .section.carousel-container.tabs-container .adventure-columns > .default-content-wrapper {
+    grid-column: 1;
+    min-width: 0;
+    max-width: none;
+    padding: 0;
+  }
+
+  main .section.carousel-container.tabs-container .adventure-columns > .tabs-wrapper {
+    grid-column: 2;
+    min-width: 0;
+    max-width: none;
+    padding: 0;
+  }
+}
+
+/* adventure title lifted below the hero — full-width, left-aligned serif with
+   the yellow underline */
+main .section.carousel-container.tabs-container .adventure-title-wrapper {
+  margin: 24px 0 0;
+}
+
+main .section.carousel-container.tabs-container .adventure-title-wrapper h1 {
+  margin: 0;
+  text-align: left;
+}
+
+main .section.carousel-container.tabs-container .adventure-title-wrapper h1::after {
+  content: '';
+  display: block;
+  width: 84px;
+  height: 3px;
+  margin-top: 12px;
+  background-color: var(--accent-color);
+}
+
+/* tabs left-aligned within the content column */
+main .section.carousel-container.tabs-container .tabs-list {
+  justify-content: flex-start;
+}
+
+/* trip-stats list styled as labeled fields with a left divider rule (no bullets) */
+main .section.tabs-container .default-content-wrapper ul {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+}
+
+main .section.tabs-container .default-content-wrapper ul > li {
+  border-left: 2px solid var(--light-color);
+  padding: 4px 0 4px 16px;
+  margin-bottom: 20px;
+}
+
+main .section.tabs-container .default-content-wrapper ul > li p:first-child {
+  margin: 0;
+  color: var(--dark-color);
+  font-size: var(--body-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+main .section.tabs-container .default-content-wrapper ul > li p:last-child {
+  margin: 2px 0 0;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* stylelint-disable no-descending-specificity */
+
+/* tab-panel body copy — airy line-height */
+main .section.carousel-container.tabs-container .tabs-panel p {
+  line-height: 2;
+}
+
+/* overview image — constrained to a moderate width, caption below */
+main .section.carousel-container.tabs-container .tabs-panel p img,
+main .section.carousel-container.tabs-container .tabs-panel p picture {
+  display: block;
+  width: 100%;
+  max-width: 845px;
+  height: auto;
+}
+
+main .section.carousel-container.tabs-container .tabs-panel .adventure-caption {
+  display: block;
+  margin: 8px 0;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--text-color);
+}
+
+/* "Share this Adventure" label — small uppercase sans-serif, no underline */
+main .section.carousel-container.tabs-container .default-content-wrapper h5 {
+  margin: 16px 0;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+main .section.carousel-container.tabs-container .default-content-wrapper h5::after {
+  content: none;
+}
+/* stylelint-enable no-descending-specificity */
