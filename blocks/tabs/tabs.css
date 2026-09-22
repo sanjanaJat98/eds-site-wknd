@@ -3,9 +3,9 @@
    wknd.site). No borders, no panel box. */
 .tabs .tabs-list {
   display: flex;
-  gap: 4px;
+  gap: 8px;
   max-width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   font-size: var(--body-font-size-xs);
   overflow-x: auto;
 }
@@ -15,11 +15,11 @@
   margin: 0;
   border: 0;
   border-radius: 0;
-  padding: 8px 16px;
+  padding: 10px 16px;
   background-color: transparent;
   color: var(--text-color);
   font-family: var(--body-font-family);
-  font-size: var(--body-font-size-xs);
+  font-size: var(--body-font-size-s);
   font-weight: 600;
   letter-spacing: 0.5px;
   line-height: 1.25;
@@ -29,7 +29,7 @@
   overflow: unset;
   white-space: nowrap;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .tabs .tabs-list button p {
