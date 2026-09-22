@@ -541,6 +541,13 @@ main .section.carousel-container.tabs-container .adventure-title-wrapper {
 main .section.carousel-container.tabs-container .adventure-title-wrapper h1 {
   margin: 0;
   text-align: left;
+  font-size: 40px;
+}
+
+@media (width >= 900px) {
+  main .section.carousel-container.tabs-container .adventure-title-wrapper h1 {
+    font-size: 60px;
+  }
 }
 
 main .section.carousel-container.tabs-container .adventure-title-wrapper h1::after {
@@ -588,7 +595,8 @@ main .section.tabs-container .default-content-wrapper ul > li p:last-child {
 
 /* tab-panel body copy — airy line-height */
 main .section.carousel-container.tabs-container .tabs-panel p {
-  line-height: 2;
+  line-height: 2.5;
+  text-align: justify;
 }
 
 /* overview image — constrained to a moderate width, caption below */
