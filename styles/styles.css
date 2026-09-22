@@ -23,8 +23,8 @@
   --dark-color: #202020;
   --text-color: #202020;
   --text-muted-color: #696969;
-  --link-color: #0045ff;
-  --link-hover-color: #0038cc;
+  --link-color: #202020;
+  --link-hover-color: #000;
   --border-color: #afafaf;
 
   /* accent — signature WKND yellow */
@@ -130,6 +130,18 @@ h1 { font-size: var(--heading-font-size-xxl); }
 h2 { font-size: var(--heading-font-size-xl); }
 h3 { font-size: var(--heading-font-size-l); }
 
+/* signature WKND yellow underline accent beneath section headings */
+main .default-content-wrapper > h1::after,
+main .default-content-wrapper > h2::after,
+main .default-content-wrapper > h3::after {
+  content: '';
+  display: block;
+  width: 84px;
+  height: 3px;
+  margin-top: 12px;
+  background-color: var(--accent-color);
+}
+
 /* smaller tiers are Source Sans Pro uppercase labels on WKND */
 h4,
 h5,
@@ -227,18 +239,18 @@ button.button:disabled {
 
 a.button.primary,
 button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
-  color: var(--background-color);
+  border-color: var(--accent-color);
+  background-color: var(--accent-color);
+  color: var(--accent-text-color);
 }
 
 a.button.primary:hover,
 a.button.primary:focus-visible,
 button.button.primary:hover,
 button.button.primary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--light-color);
+  border-color: var(--accent-hover-color);
+  background-color: var(--accent-hover-color);
+  color: var(--accent-text-color);
 }
 
 a.button.primary[aria-disabled="true"],
