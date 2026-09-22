@@ -3,7 +3,7 @@
   "sites": {
     "eds-site-wknd": {
       "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json",
-      "previewOrg": "sanjanajat98",
+      "previewOrg": "sanjanaJat98",
       "previewSite": "eds-site-wknd",
       "contentHostUrl": "https://content.da.live/sanjanajat98/eds-site-wknd/"
     }
