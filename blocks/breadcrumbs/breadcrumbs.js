@@ -12,35 +12,30 @@ export default function decorate(block) {
   const ol = document.createElement('ol');
   ol.className = 'breadcrumbs-list';
 
-  // Collect breadcrumb entries: any links in the block, in order,
-  // plus a trailing non-link entry for the current page if present.
-  const entries = [];
-  block.querySelectorAll('a').forEach((a) => {
-    entries.push({ label: a.textContent.trim(), href: a.getAttribute('href') });
-  });
-
-  // The current page is the last cell's text when it isn't a link.
-  const cells = [...block.querySelectorAll(':scope > div > div, :scope > div')];
-  const lastCell = cells[cells.length - 1];
-  if (lastCell && !lastCell.querySelector('a')) {
-    const text = lastCell.textContent.trim();
-    if (text) entries.push({ label: text, href: null });
+  // Collect trail items: prefer authored <li>s (imported as a list), else each
+  // row's link/text. The last item is the current page (a non-linked crumb).
+  let items = [...block.querySelectorAll('li')];
+  if (!items.length) {
+    items = [...block.children].map((row) => row.firstElementChild || row);
   }
 
-  entries.forEach((entry, i) => {
+  items.forEach((item, i) => {
     const li = document.createElement('li');
     li.className = 'breadcrumbs-item';
-    if (entry.href) {
+    const link = item.querySelector('a');
+    const isLast = i === items.length - 1;
+    if (link && !isLast) {
       const a = document.createElement('a');
-      a.href = entry.href;
-      a.textContent = entry.label;
+      a.href = link.getAttribute('href');
+      a.textContent = link.textContent.trim();
       li.append(a);
     } else {
-      li.textContent = entry.label;
-      li.setAttribute('aria-current', 'page');
+      // current page (or a non-linked crumb) — plain text
+      li.textContent = (link || item).textContent.trim();
+      if (isLast) li.setAttribute('aria-current', 'page');
     }
     ol.append(li);
-    if (i < entries.length - 1) li.classList.add('breadcrumbs-has-sep');
+    if (i < items.length - 1) li.classList.add('breadcrumbs-has-sep');
   });
 
   nav.append(ol);
